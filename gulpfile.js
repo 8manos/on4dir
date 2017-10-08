@@ -86,7 +86,7 @@ gulp.task('htmlen', ['styles', 'scripts'], () => {
       removeScriptTypeAttributes: true,
       removeStyleLinkTypeAttributes: true
     })))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist/en'));
 });
 
 gulp.task('images', () => {
@@ -188,13 +188,6 @@ gulp.task('wiredep', () => {
       ignorePath: /^(\.\.\/)*\.\./
     }))
     .pipe(gulp.dest('app'));
-
-    gulp.src('app/en/*.html')
-      .pipe(wiredep({
-        exclude: ['bootstrap'],
-        ignorePath: /^(\.\.\/)*\.\./
-      }))
-      .pipe(gulp.dest('app/en'));
 });
 
 gulp.task('build', ['lint', 'html', 'htmlen', 'images', 'assets', 'fonts', 'extras'], () => {
